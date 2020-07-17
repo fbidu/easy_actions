@@ -16,8 +16,8 @@ from easy_actions import App
 from easy_actions.authenticators import BasicAuth, GithubAuth, GoogleAuth
 from easy_actions.actuators import AWSActions
 
-basic_auth = BasicAuth(user="admin", password="this should not be used in prod")
-sesame = App(debug=True, authenticators=[basic_auth])
+basic_auth = BasicAuth(username="admin", password="this should not be used in prod")
+sesame = App('open-sesame', authenticators=[basic_auth])
 
 github_auth = GithubAuth(params="All the cool parameters github needs")
 sesame.register_auth(github_auth)
@@ -44,5 +44,5 @@ open_xpto = OpenSGPort(probably="auth params", to_boto="go here!")
 sesame.register_action(open_xpto)
 
 if __name__ == "__main__":
-    sesame.run()
+    sesame.run(debug=True)
 ```
